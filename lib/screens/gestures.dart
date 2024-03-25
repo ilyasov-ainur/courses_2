@@ -35,7 +35,6 @@ class _GesturesScreenState extends State<GesturesScreen> {
             ),
             const SizedBox(height: 20),
             Material(
-              color: Colors.white,
               child: InkWell(
                 onTap: () {},
                 child: Container(

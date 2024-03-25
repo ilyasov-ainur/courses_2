@@ -43,10 +43,10 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            _Button(label: 'Кнопки', child: ButtonsScreen()),
-            _Button(label: 'Жесты', child: GesturesScreen()),
-            _Button(label: 'Скролл', child: ScrollScreen()),
-            _Button(label: 'PageView', child: PageViewScreen()),
+            _Button(label: 'Кнопки', page: ButtonsScreen()),
+            _Button(label: 'Жесты', page: GesturesScreen()),
+            _Button(label: 'Скролл', page: ScrollScreen()),
+            _Button(label: 'PageView', page: PageViewScreen()),
           ],
         ),
       ),
@@ -56,18 +56,17 @@ class MyHomePage extends StatelessWidget {
 
 class _Button extends StatelessWidget {
   final String label;
-  final Widget child;
+  final Widget page;
   const _Button({
     required this.label,
-    required this.child,
+    required this.page,
   });
 
   @override
   Widget build(BuildContext context) {
     return FilledButton(
       onPressed: () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => child));
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => page));
       },
       child: Text(label),
     );

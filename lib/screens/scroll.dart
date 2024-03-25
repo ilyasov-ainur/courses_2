@@ -40,9 +40,7 @@ class _ScrollScreenState extends State<ScrollScreen> {
                       child: Container(
                         padding: const EdgeInsets.all(8.0),
                         decoration: BoxDecoration(
-                          color: content == type
-                              ? Colors.blueAccent
-                              : Colors.transparent,
+                          color: content == type ? Colors.blueAccent : Colors.transparent,
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Text(
@@ -57,8 +55,7 @@ class _ScrollScreenState extends State<ScrollScreen> {
           const SizedBox(height: 8),
           Expanded(
             child: switch (content) {
-              _ScrollContent.singleChildScrollView =>
-                const _SingleChildScrollView(),
+              _ScrollContent.singleChildScrollView => const _SingleChildScrollView(),
               _ScrollContent.listView => const _ListView(),
               _ScrollContent.listViewBuilder => const _ListViewBuilder(),
               _ScrollContent.listViewSeparated => const _ListViewSeparated(),
@@ -153,7 +150,6 @@ class _ListViewBuilder extends StatefulWidget {
 }
 
 class __ListViewBuilderState extends State<_ListViewBuilder> {
-  late final ScrollController _controller = ScrollController();
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
