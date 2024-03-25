@@ -24,8 +24,7 @@ class _ButtonsScreenState extends State<ButtonsScreen> {
   }
 
   void showSnack(String message) {
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
   }
 
   Future<void> loadData() async {
@@ -57,12 +56,8 @@ class _ButtonsScreenState extends State<ButtonsScreen> {
               title: 'Filled',
               children: [
                 FilledButton(
-                  onPressed: () {
-                    showSnack('Pressed');
-                  },
-                  onLongPress: () {
-                    showSnack('LongPress');
-                  },
+                  onPressed: () => showSnack('Pressed'),
+                  onLongPress: () => showSnack('LongPress'),
                   onFocusChange: (value) => showSnack('Focus: $value'),
                   child: const Text('Press me!'),
                 ),
@@ -73,7 +68,21 @@ class _ButtonsScreenState extends State<ButtonsScreen> {
                   child: const Text('Hold me!'),
                 ),
                 const SizedBox(width: 16),
+                FilledButton.tonal(
+                  onPressed: () {},
+                  statesController: controller,
+                  child: const Text('Hold me!'),
+                ),
+                const SizedBox(width: 16),
                 FilledButton.icon(
+                  // style: ButtonStyle(
+                  //   backgroundColor: MaterialStateProperty.resolveWith((states) {
+                  //     if (states.contains(MaterialState.disabled)) {
+                  //       return Colors.grey;
+                  //     }
+                  //     return Colors.green;
+                  //   }),
+                  // ),
                   style: FilledButton.styleFrom(
                     foregroundColor: Colors.white,
                     backgroundColor: Colors.green,
@@ -124,6 +133,11 @@ class _ButtonsScreenState extends State<ButtonsScreen> {
               title: 'Elevated',
               children: [
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
                   onPressed: () {
                     showSnack('Pressed');
                   },
@@ -180,6 +194,7 @@ class _ButtonsScreenState extends State<ButtonsScreen> {
                 IconButton(
                   onPressed: () {},
                   icon: const Icon(Icons.add),
+                  tooltip: 'Add',
                 ),
                 IconButton.filled(
                   onPressed: () {},
@@ -217,8 +232,7 @@ class _ButtonsScreenState extends State<ButtonsScreen> {
                 ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
                     elevation: _isFly ? 10 : 0,
-                    backgroundColor:
-                        _isFly ? Colors.redAccent : Colors.blueAccent,
+                    backgroundColor: _isFly ? Colors.redAccent : Colors.blueAccent,
                     foregroundColor: _isFly ? Colors.black : Colors.white,
                   ),
                   onPressed: () {

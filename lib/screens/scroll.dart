@@ -61,7 +61,7 @@ class _ScrollScreenState extends State<ScrollScreen> {
               _ScrollContent.listViewSeparated => const _ListViewSeparated(),
               _ScrollContent.customScrollView => const _CustomScrollView(),
             },
-          )
+          ),
         ],
       ),
     );
@@ -113,6 +113,7 @@ class __ListViewState extends State<_ListView> {
   @override
   Widget build(BuildContext context) {
     return ListView(
+      padding: const EdgeInsets.all(20),
       children: [
         Container(
           height: 200,
@@ -137,6 +138,7 @@ class __ListViewState extends State<_ListView> {
             ),
           ],
         ),
+        Text('data' * 1000)
       ],
     );
   }
@@ -178,24 +180,29 @@ class _ListViewSeparated extends StatefulWidget {
 }
 
 class __ListViewSeparatedState extends State<_ListViewSeparated> {
+  // TODO: add scrollcontroller
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: 100,
-      padding: const EdgeInsets.all(16),
-      separatorBuilder: (context, index) =>
-          index.isEven ? const SizedBox(height: 8) : const SizedBox(height: 16),
-      itemBuilder: (context, index) {
-        return Container(
-          height: 100,
-          decoration: BoxDecoration(
-            color: index.isEven ? Colors.cyanAccent : Colors.redAccent,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          alignment: Alignment.center,
-          child: Text('Index $index'),
-        );
-      },
+    return Stack(
+      children: [
+        ListView.separated(
+          itemCount: 100,
+          padding: const EdgeInsets.all(16),
+          separatorBuilder: (context, index) =>
+              index.isEven ? const SizedBox(height: 8) : const SizedBox(height: 16),
+          itemBuilder: (context, index) {
+            return Container(
+              height: 100,
+              decoration: BoxDecoration(
+                color: index.isEven ? Colors.cyanAccent : Colors.redAccent,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              alignment: Alignment.center,
+              child: Text('Index $index'),
+            );
+          },
+        ),
+      ],
     );
   }
 }
@@ -244,7 +251,6 @@ class __CustomScrollViewState extends State<_CustomScrollView> {
           ),
           itemBuilder: (context, index) {
             return Container(
-              height: 100,
               decoration: BoxDecoration(
                 color: index.isEven ? Colors.cyanAccent : Colors.redAccent,
                 borderRadius: BorderRadius.circular(20),

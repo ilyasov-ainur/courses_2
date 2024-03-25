@@ -34,17 +34,15 @@ class _GesturesScreenState extends State<GesturesScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            Material(
-              child: InkWell(
-                onTap: () {},
-                child: Container(
-                  height: 200,
-                  width: 200,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 2,
-                      color: Colors.black,
-                    ),
+            InkWell(
+              onTap: () {},
+              child: Container(
+                height: 200,
+                width: 200,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 2,
+                    color: Colors.black,
                   ),
                 ),
               ),
@@ -116,12 +114,6 @@ class _GesturesScreenState extends State<GesturesScreen> {
   void _onLongPress() {
     setState(() {
       _containerColor = Colors.amber;
-    });
-  }
-
-  void _onLongPressCancel() {
-    setState(() {
-      _containerColor = Colors.red;
     });
   }
 }
