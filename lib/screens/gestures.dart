@@ -34,15 +34,18 @@ class _GesturesScreenState extends State<GesturesScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            InkWell(
-              onTap: () {},
-              child: Container(
-                height: 200,
-                width: 200,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 2,
-                    color: Colors.black,
+            Material(
+              color: Colors.amber,
+              child: InkResponse(
+                onTap: () {},
+                child: Container(
+                  height: 200,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 2,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
               ),
@@ -50,9 +53,8 @@ class _GesturesScreenState extends State<GesturesScreen> {
             const SizedBox(height: 50),
             Row(
               children: [
-                LongPressDraggable<int>(
+                Draggable<int>(
                   data: 1,
-                  delay: const Duration(milliseconds: 100),
                   feedback: Container(
                     width: 200,
                     height: 100,

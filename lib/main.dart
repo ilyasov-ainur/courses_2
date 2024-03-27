@@ -1,14 +1,7 @@
 import 'package:cr_flutter_interactivity/screens/screens.dart';
 import 'package:flutter/material.dart';
-import 'package:surf_logger/surf_logger.dart';
-
-final logger = Logger.empty();
 
 void main() {
-  logger.e(
-    'This is an error message',
-    StackTrace.current,
-  );
   runApp(const MyApp());
 }
 

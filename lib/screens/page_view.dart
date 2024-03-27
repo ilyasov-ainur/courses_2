@@ -24,15 +24,18 @@ class _PageViewScreenState extends State<PageViewScreen> {
       appBar: AppBar(
         title: const Text('PageView'),
       ),
-      body: PageView.builder(
-        itemCount: HomeTab.values.length,
+      body: PageView(
         onPageChanged: _onTabChanged,
         controller: pageController,
-        itemBuilder: (context, index) {
-          return Center(
-            child: Text(HomeTab.values[index].name),
-          );
-        },
+        children: [
+          for (final tab in HomeTab.values)
+            Container(
+              color: tabColor(tab),
+              child: Center(
+                child: Text(tab.name),
+              ),
+            ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentTab.index,
@@ -70,6 +73,17 @@ class _PageViewScreenState extends State<PageViewScreen> {
         return Icons.shopping_cart;
       case HomeTab.settings:
         return Icons.settings;
+    }
+  }
+
+  Color tabColor(HomeTab tab) {
+    switch (tab) {
+      case HomeTab.search:
+        return Colors.blueAccent;
+      case HomeTab.cart:
+        return Colors.redAccent;
+      case HomeTab.settings:
+        return Colors.yellowAccent;
     }
   }
 }

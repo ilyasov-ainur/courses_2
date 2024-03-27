@@ -180,16 +180,32 @@ class _ListViewSeparated extends StatefulWidget {
 }
 
 class __ListViewSeparatedState extends State<_ListViewSeparated> {
-  // TODO: add scrollcontroller
+  late final ScrollController controller;
+
+  @override
+  void initState() {
+    controller = ScrollController()..addListener(() {});
+    super.initState();
+  }
+
+  void scrollToTop() {
+    controller.animateTo(
+      0,
+      duration: const Duration(milliseconds: 3000),
+      curve: Curves.easeInOut,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         ListView.separated(
+          controller: controller,
           itemCount: 100,
           padding: const EdgeInsets.all(16),
           separatorBuilder: (context, index) =>
-              index.isEven ? const SizedBox(height: 8) : const SizedBox(height: 16),
+              index.isEven ? const SizedBox(height: 8) : const SizedBox(height: 30),
           itemBuilder: (context, index) {
             return Container(
               height: 100,
@@ -202,6 +218,14 @@ class __ListViewSeparatedState extends State<_ListViewSeparated> {
             );
           },
         ),
+        Positioned(
+          bottom: 16,
+          right: 16,
+          child: IconButton.filled(
+            onPressed: scrollToTop,
+            icon: const Icon(Icons.arrow_upward),
+          ),
+        )
       ],
     );
   }

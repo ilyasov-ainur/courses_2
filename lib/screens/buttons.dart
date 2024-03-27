@@ -196,7 +196,7 @@ class _ButtonsScreenState extends State<ButtonsScreen> {
                   icon: const Icon(Icons.add),
                   tooltip: 'Add',
                 ),
-                IconButton.filled(
+                IconButton.filledTonal(
                   onPressed: () {},
                   icon: const Icon(Icons.add),
                 ),
